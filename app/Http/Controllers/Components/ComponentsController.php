@@ -72,6 +72,7 @@ class ComponentsController extends Controller
         $component->company_id             = Company::getIdForCurrentUser($request->input('company_id'));
         $component->order_number           = $request->input('order_number', null);
         $component->min_amt                = $request->input('min_amt', null);
+        $component->notes                  = request('notes', null);
         $component->serial                 = $request->input('serial', null);
         $component->purchase_date          = $request->input('purchase_date', null);
         $component->purchase_cost          = $request->input('purchase_cost', null);
@@ -142,6 +143,7 @@ class ComponentsController extends Controller
         $component->company_id             = Company::getIdForCurrentUser($request->input('company_id'));
         $component->order_number           = $request->input('order_number');
         $component->min_amt                = $request->input('min_amt');
+        $component->notes                  = request('notes');
         $component->serial                 = $request->input('serial');
         $component->purchase_date          = $request->input('purchase_date');
         $component->purchase_cost          = request('purchase_cost');
