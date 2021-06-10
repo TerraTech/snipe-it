@@ -23,7 +23,7 @@ class ComponentsController extends Controller
     {
         $this->authorize('view', Component::class);
         $components = Company::scopeCompanyables(Component::select('components.*')
-            ->with('company', 'location', 'category'));
+            ->with('company', 'location', 'category', 'manufacturer'));
 
         if ($request->filled('search')) {
             $components = $components->TextSearch($request->input('search'));
@@ -48,7 +48,7 @@ class ComponentsController extends Controller
         // Check to make sure the limit is not higher than the max allowed
         ((config('app.max_results') >= $request->input('limit')) && ($request->filled('limit'))) ? $limit = $request->input('limit') : $limit = config('app.max_results');
 
-        $allowed_columns = ['id','name','min_amt','order_number','serial','purchase_date','purchase_cost','company','category','qty','location','image'];
+        $allowed_columns = ['id','name','model_number','min_amt','order_number','serial','purchase_date','purchase_cost','company','category','qty','location','image'];
         $order = $request->input('order') === 'asc' ? 'asc' : 'desc';
         $sort = in_array($request->input('sort'), $allowed_columns) ? $request->input('sort') : 'created_at';
 

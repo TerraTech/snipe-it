@@ -78,6 +78,8 @@ class ComponentsController extends Controller
         $component->purchase_cost          = $request->input('purchase_cost', null);
         $component->qty                    = $request->input('qty');
         $component->user_id                = Auth::id();
+        $component->manufacturer_id        = request('manufacturer_id');
+        $component->model_number           = request('model_number');
 
         $component = $request->handleImages($component);
 
@@ -148,6 +150,8 @@ class ComponentsController extends Controller
         $component->purchase_date          = $request->input('purchase_date');
         $component->purchase_cost          = request('purchase_cost');
         $component->qty                    = $request->input('qty');
+        $component->manufacturer_id        = request('manufacturer_id');
+        $component->model_number           = request('model_number');
 
         $component = $request->handleImages($component);
 

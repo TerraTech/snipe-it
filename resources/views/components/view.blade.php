@@ -114,6 +114,16 @@
 
     @endif
 
+    @if ($component->manufacturer)
+    <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('general.manufacturer') }}: </strong>
+    {{ $component->manufacturer->name }} </div>
+    @endif
+
+    @if ($component->model_number)
+    <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('admin/models/table.modelnumber') }}: </strong>
+    {{ $component->model_number }} </div>
+    @endif
+
     @if ($component->serial!='')
     <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('admin/hardware/form.serial') }}: </strong>
     {{ $component->serial }} </div>

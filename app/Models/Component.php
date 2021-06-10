@@ -60,6 +60,8 @@ class Component extends SnipeModel
         'order_number',
         'qty',
         'serial',
+        'manufacturer_id',
+        'model_number',
     ];
 
     use Searchable;
@@ -154,6 +156,16 @@ class Component extends SnipeModel
     public function assetlog()
     {
         return $this->hasMany('\App\Models\Actionlog', 'item_id')->where('item_type', Component::class)->orderBy('created_at', 'desc')->withTrashed();
+    }
+
+    /**
+     * Establishes the component -> manufacturer relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function manufacturer()
+    {
+        return $this->belongsTo('\App\Models\Manufacturer', 'manufacturer_id');
     }
 
     /**
