@@ -46,6 +46,11 @@ class ComponentsTransformer
             'created_at' => Helper::getFormattedDateObject($component->created_at, 'datetime'),
             'updated_at' => Helper::getFormattedDateObject($component->updated_at, 'datetime'),
             'user_can_checkout' =>  ($component->numRemaining() > 0) ? 1 : 0,
+            'manufacturer' => ($component->manufacturer) ? [
+                'id' => (int) $component->manufacturer->id,
+                'name' => e($component->manufacturer->name)
+            ] : null,
+            'model_number' => ($component->model_number) ? e($component->model_number) : null,
         ];
 
         $permissions_array['available_actions'] = [

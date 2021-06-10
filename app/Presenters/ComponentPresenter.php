@@ -48,7 +48,19 @@ class ComponentPresenter extends Presenter
                 "title" => trans('general.image'),
                 "visible" => false,
                 "formatter" => 'imageFormatter',
-            ],[
+            ], [
+                "field" => "manufacturer",
+                "searchable" => true,
+                "sortable" => true,
+                "title" => trans('general.manufacturer'),
+                "formatter" => "manufacturersLinkObjFormatter",
+            ], [
+                "field" => "model_number",
+                "searchable" => true,
+                "sortable" => true,
+                "title" => trans('admin/models/table.modelnumber'),
+                "formatter" => "componentsLinkFormatter"
+            ], [
                 "field" => "serial",
                 "searchable" => true,
                 "sortable" => true,
