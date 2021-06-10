@@ -80,6 +80,7 @@ class ComponentsController extends Controller
         $component->user_id                = Auth::id();
         $component->manufacturer_id        = request('manufacturer_id');
         $component->model_number           = request('model_number');
+        $component->supplier_id            = request('supplier_id');
 
         $component = $request->handleImages($component);
 
@@ -152,6 +153,7 @@ class ComponentsController extends Controller
         $component->qty                    = $request->input('qty');
         $component->manufacturer_id        = request('manufacturer_id');
         $component->model_number           = request('model_number');
+        $component->supplier_id            = request('supplier_id');
 
         $component = $request->handleImages($component);
 
