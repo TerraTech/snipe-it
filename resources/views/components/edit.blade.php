@@ -34,5 +34,6 @@
 @endif
 
 @include ('partials.forms.edit.image-upload')
+@include ('partials.forms.edit.notes')
 
 @stop
