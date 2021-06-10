@@ -62,6 +62,7 @@ class Component extends SnipeModel
         'serial',
         'manufacturer_id',
         'model_number',
+        'supplier_id',
     ];
 
     use Searchable;
@@ -235,5 +236,15 @@ class Component extends SnipeModel
     public function scopeOrderCompany($query, $order)
     {
         return $query->leftJoin('companies', 'components.company_id', '=', 'companies.id')->orderBy('companies.name', $order);
+    }
+
+    /**
+     * Establishes the component -> supplier relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\Relation
+     */
+    public function supplier()
+    {
+        return $this->belongsTo('\App\Models\Supplier', 'supplier_id');
     }
 }

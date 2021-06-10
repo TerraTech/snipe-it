@@ -129,6 +129,16 @@
     {{ $component->serial }} </div>
     @endif
 
+    @if ($component->supplier)
+    <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('general.supplier') }}: </strong>
+    {{ $component->supplier->name }} </div>
+    @endif
+
+    @if ($component->order_number)
+    <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('general.order_number') }}:</strong>
+    {{ $component->order_number }} </div>
+    @endif
+
     @if ($component->purchase_date)
     <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('admin/components/general.date') }}: </strong>
     {{ $component->purchase_date }} </div>
@@ -139,11 +149,6 @@
     {{ $snipeSettings->default_currency }}
 
     {{ \App\Helpers\Helper::formatCurrencyOutput($component->purchase_cost) }} </div>
-    @endif
-
-    @if ($component->order_number)
-    <div class="col-md-12" style="padding-bottom: 5px;"><strong>{{ trans('general.order_number') }}:</strong>
-    {{ $component->order_number }} </div>
     @endif
   </div>
 </div> <!-- .row-->
