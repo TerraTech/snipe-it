@@ -97,6 +97,14 @@ class ComponentPresenter extends Presenter
                 "title" => trans('general.location'),
                 "formatter" => "locationsLinkObjFormatter"
             ], [
+                "field" => "supplier",
+                "searchable" => true,
+                "sortable" => true,
+                "switchable" => true,
+                "title" => trans('general.supplier'),
+                "visible" => true,
+                "formatter" => "suppliersLinkObjFormatter"
+            ], [
                 "field" => "order_number",
                 "searchable" => true,
                 "sortable" => true,

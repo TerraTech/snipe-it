@@ -51,6 +51,10 @@ class ComponentsTransformer
                 'name' => e($component->manufacturer->name)
             ] : null,
             'model_number' => ($component->model_number) ? e($component->model_number) : null,
+            'supplier' => ($component->supplier) ? [
+                'id' => (int) $component->supplier->id,
+                'name' => e($component->supplier->name)
+            ] : null,
             'notes' => ($component->notes) ? e($component->notes) : null,
         ];
 
