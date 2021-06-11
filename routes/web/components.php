@@ -20,6 +20,11 @@ Route::group([ 'prefix' => 'components','middleware' => ['auth'] ], function () 
         [ 'as' => 'component.checkin.save', 'uses' => 'Components\ComponentCheckinController@store' ]
     );
 
+    Route::get('{componentId}/clone', [
+        'as' => 'clone/component',
+        'uses' => 'Components\ComponentsController@getClone'
+    ]);
+
 });
 
 Route::resource('components', 'Components\ComponentsController', [

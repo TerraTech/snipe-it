@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Components;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImageUploadRequest;
 use App\Models\Company;
@@ -214,5 +215,30 @@ class ComponentsController extends Controller
         // Redirect to the user management page
         return redirect()->route('components.index')
             ->with('error', trans('admin/components/message.does_not_exist'));
+    }
+
+    /**
+     * Returns a view that presents a form to clone a component.
+     *
+     * @param int $componentId
+     * @return View
+     */
+    public function getClone($componentId = null)
+    {
+        // Check if the component exists
+        if (is_null($component_to_clone = Component::find($componentId))) {
+            // Redirect to the component management page
+            return redirect()->route('component.index')->with('error', trans('admin/component/message.does_not_exist'));
+        }
+        $this->authorize('create', $component_to_clone);
+
+        $component = clone $component_to_clone;
+        $component->id = null;
+        $component->serial = '';
+
+        return view('components/edit')
+            ->with('statuslabel_list', Helper::statusLabelList())
+            ->with('statuslabel_types', Helper::statusTypeList())
+            ->with('item', $component);
     }
 }

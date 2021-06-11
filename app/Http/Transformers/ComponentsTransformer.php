@@ -61,6 +61,7 @@ class ComponentsTransformer
         $permissions_array['available_actions'] = [
             'checkout' => Gate::allows('checkout', Component::class),
             'checkin' => Gate::allows('checkin', Component::class),
+            'clone' => Gate::allows('create', Component::class),
             'update' => Gate::allows('update', Component::class),
             'delete' => Gate::allows('delete', Component::class),
         ];
